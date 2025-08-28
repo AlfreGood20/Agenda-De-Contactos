@@ -1,7 +1,9 @@
 package com.proyecto;
 
+import com.proyecto.vista.PrimerVentana;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new PrimerVentana();
     }
 }

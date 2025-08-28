@@ -36,7 +36,7 @@ public class PrimerVentana extends JFrame{
 
     private void etiquetas(){
         JLabel etiqueta=new Etiqueta("Mi primera ventana", 100, 50, 300,100 , Color.BLACK, 30, "Arial").normal();
-        panel.add(etiqueta);
+        panel.add(etiqueta); //AGREGAR ETIQUETA AL PANEL
     }
 
     private void boton(){

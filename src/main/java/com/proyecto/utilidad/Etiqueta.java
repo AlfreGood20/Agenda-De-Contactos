@@ -36,16 +36,11 @@ public class Etiqueta {
         this.tipografia = tipografia;
     }
 
-    public Etiqueta(String titulo, int x, int y, int ancho, int altura, Color colorDeLetra, int tamañoLetra,
-            String tipografia, String url) {
-        this.titulo = titulo;
+    public Etiqueta(int x, int y, int ancho, int altura,String url) {
         this.x = x;
         this.y = y;
         this.ancho = ancho;
         this.altura = altura;
-        this.colorDeLetra = colorDeLetra;
-        this.tamañoLetra = tamañoLetra;
-        this.tipografia = tipografia;
         this.url = url;
     }
 

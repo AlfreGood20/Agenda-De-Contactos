@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.proyecto.utilidad.Boton;
@@ -35,12 +36,16 @@ public class PrimerVentana extends JFrame{
     }
 
     private void etiquetas(){
-        JLabel etiqueta=new Etiqueta("Mi primera ventana", 100, 50, 300,100 , Color.BLACK, 30, "Arial").normal();
+        JLabel etiqueta=new Etiqueta("Mi primera ventana", 100, 50, 300,100 , Color.BLACK, 30, "Arial").normal(); 
         panel.add(etiqueta); //AGREGAR ETIQUETA AL PANEL
     }
 
     private void boton(){
-        JButton boton=new Boton("Da click aqui",130, 200, 100, 50, Color.GREEN).normal();
+        JButton boton=new Boton("Da click aqui",150, 200, 150, 50, Color.GREEN).normal();
         panel.add(boton);
+
+        boton.addActionListener(e -> {
+            JOptionPane.showMessageDialog(null, "Has hecho click", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+        });
     }
 }

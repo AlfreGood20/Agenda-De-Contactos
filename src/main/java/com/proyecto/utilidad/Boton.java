@@ -27,15 +27,11 @@ public class Boton {
         this.colorBoton = colorBoton;
     }
 
-    public Boton(String titulo, int x, int y, int ancho, int altura, Color colorBoton, JButton boton, String url) {
-        this.titulo = titulo;
-        this.x = x;
-        this.y = y;
-        this.ancho = ancho;
-        this.altura = altura;
-        this.colorBoton = colorBoton;
+    public Boton(JButton boton, String url, int ancho, int altura) {
         this.boton = boton;
         this.url = url;
+        this.ancho = ancho;
+        this.altura = altura;
     }
 
     public JButton normal(){

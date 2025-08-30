@@ -2,6 +2,7 @@ package com.proyecto.utilidad;
 
 import java.awt.Font;
 
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class CampoTexto {
@@ -27,5 +28,12 @@ public class CampoTexto {
 		campo.setBounds(x, y, ancho, altura);
 		campo.setFont(new Font(tipoLetra, Font.BOLD, tamañoLetra));
 		return campo;
+    }
+
+    public JPasswordField campoContraseña() {
+        JPasswordField campo = new JPasswordField();
+        campo.setBounds(x, y, ancho, altura);
+        campo.setFont(new java.awt.Font(tipoLetra, java.awt.Font.PLAIN, tamañoLetra));
+        return campo;
     }
 }

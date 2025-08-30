@@ -36,4 +36,5 @@ public class CampoTexto {
         campo.setFont(new java.awt.Font(tipoLetra, java.awt.Font.PLAIN, tamañoLetra));
         return campo;
     }
+
 }

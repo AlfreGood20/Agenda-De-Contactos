@@ -58,6 +58,10 @@ public class Login  extends JFrame{
         JButton entrar=new Boton("Entrar",150,300,200,50, Color.gray).normal();
         panel.add(entrar);
 
+        entrar.addActionListener(e -> {
+            new Menu();
+        });
+
         JButton crearCuenta=new Boton("Crear cuenta",300,420,170,30, Color.gray).normal();
         crearCuenta=new Boton(crearCuenta, "imagenes/nuevo.png", 40,30).conImagen();
         panel.add(crearCuenta);

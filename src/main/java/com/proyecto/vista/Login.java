@@ -65,6 +65,11 @@ public class Login  extends JFrame{
         JButton crearCuenta=new Boton("Crear cuenta",300,420,170,30, Color.gray).normal();
         crearCuenta=new Boton(crearCuenta, "imagenes/nuevo.png", 40,30).conImagen();
         panel.add(crearCuenta);
+
+        crearCuenta.addActionListener(e -> {
+            this.setVisible(false);
+            new Registrarse();
+        });
     }
 
     private void textField(){

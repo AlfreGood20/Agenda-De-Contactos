@@ -136,7 +136,6 @@ public class Menu extends JFrame {
 
     public void campoTexto(){
         JTextField campoNombre=new CampoTexto(50, 160, 350, 35, "Arial", 15).campo();
-
         panelRegistro.add(campoNombre);
 
         JTextField campoApellidos=new CampoTexto(550, 160, 350, 35, "Arial", 15).campo();

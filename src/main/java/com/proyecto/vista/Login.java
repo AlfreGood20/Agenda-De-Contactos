@@ -9,7 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import com.proyecto.utilidad.Boton;
 import com.proyecto.utilidad.CampoTexto;
 import com.proyecto.utilidad.Etiqueta;
@@ -23,7 +22,7 @@ public class Login  extends JFrame{
    public Login(){
 
         this.setTitle("Login"); //TITULO DE LA VENTANA
-        this.setSize(500, 500); //TAMAÑO DE LA VENTANA
+        this.setSize(520, 440); //TAMAÑO DE LA VENTANA
         this.setLocationRelativeTo(null); // HACE QUE LA PANTALLA SALGA EN EL CENTRO
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // HACE QUE EL USUARIO NO PUEDA CERRAR LA VENTANA
         this.setResizable(false);
@@ -44,25 +43,26 @@ public class Login  extends JFrame{
     }
 
     private void etiqueta(){
-        JLabel etiquetaIniciarSesion=new Etiqueta("INICIAR SESIÓN",135, 10, 300,100 , Color.BLACK, 30, "Arial").normal(); 
-        panel.add(etiquetaIniciarSesion); 
+        JLabel titulo = new Etiqueta("INICIAR SESIÓN", 110, 20, 300, 50, Color.BLACK, 32, "Arial Black").normal(); 
+        panel.add(titulo);
 
-        JLabel correo= new Etiqueta("Correo Electronico",160,110,200,50,Color.black,20,"Arial").normal();
+        JLabel correo = new Etiqueta("Correo electrónico", 150, 90, 200, 30, Color.BLACK, 18, "Arial").normal();
         panel.add(correo);
 
-        JLabel contraseña= new Etiqueta("Contraseña", 190, 200,200, 50, Color.BLACK,20,"Arial").normal();
+        JLabel contraseña = new Etiqueta("Contraseña", 150, 170, 200, 30, Color.BLACK, 18, "Arial").normal();
         panel.add(contraseña);
     }
 
     private void botones(){
-        JButton entrar=new Boton("Entrar",150,300,200,50, Color.gray).normal();
+        JButton entrar=new Boton("Entrar",150, 260, 200, 40, Color.gray).normal();
         panel.add(entrar);
 
         entrar.addActionListener(e -> {
+            this.setVisible(false);
             new Menu();
         });
 
-        JButton crearCuenta=new Boton("Crear cuenta",300,420,170,30, Color.gray).normal();
+        JButton crearCuenta=new Boton("Crear cuenta",170, 320, 160, 30, Color.gray).normal();
         crearCuenta=new Boton(crearCuenta, "imagenes/nuevo.png", 40,30).conImagen();
         panel.add(crearCuenta);
 
@@ -73,10 +73,10 @@ public class Login  extends JFrame{
     }
 
     private void textField(){
-        JTextField correo=new CampoTexto(150,150,200,30, "Arial", 15).campo();
-        panel.add(correo);
+        JTextField campoCorreo = new CampoTexto(150, 120, 200, 30, "Arial", 15).campo();
+        panel.add(campoCorreo);
 
-        JPasswordField contraseña=new CampoTexto(150,240,200,30, "Arial", 15).campoContraseña();
-        panel.add(contraseña);
+        JPasswordField campoContraseña = new CampoTexto(150, 200, 200, 30, "Arial", 15).campoContraseña();
+        panel.add(campoContraseña);
     }
 }

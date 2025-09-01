@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.*;
 
 import com.proyecto.utilidad.Boton;
+import com.proyecto.utilidad.CampoTexto;
 import com.proyecto.utilidad.Etiqueta;
 
 public class Registrarse extends JFrame {
@@ -15,9 +16,10 @@ public class Registrarse extends JFrame {
         this.setSize(500, 550); // TAMAÑO DE LA VENTANA
         this.setLocationRelativeTo(null); // HACE QUE LA PANTALLA SALGA EN EL CENTRO
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // HACE QUE EL USUARIO NO PUEDA CERRAR LA VENTANA
+        this.setResizable(false);
 
         panel = new JPanel(); // SE CREA EL PRINCIPAL PANEL
-        panel.setBackground(Color.WHITE); // COLOR DEL FONDO DEL PANEL
+        panel.setBackground(Color.decode("#FFF8DC")); // COLOR DEL FONDO DEL PANEL
         panel.setLayout(null); // QUITA LA CONFIGURACION DETERMINADA DEL PANEL
         this.getContentPane().add(panel); // AGREGAMOS EL PANEL AL JFRAME
 
@@ -32,7 +34,7 @@ public class Registrarse extends JFrame {
     }
 
     private void etiquetas() {
-        JLabel contexto = new Etiqueta("Registrarse", 180, -20, 200, 100, Color.BLACK, 25, "Berlin Sans FB Demi").normal();
+        JLabel contexto = new Etiqueta("Registrarse", 180, 0, 200, 100, Color.BLACK, 25, "Berlin Sans FB Demi").normal();
         panel.add(contexto);
 
         // Etiquetas del formulario
@@ -56,12 +58,16 @@ public class Registrarse extends JFrame {
     }
 
     private void botones() {
-        JButton botonRegistrarse= new Boton("Registrase", 250, 430, 150, 50, Color.MAGENTA).normal();
+        JButton botonRegistrarse= new Boton("Registrarse", 180, 430, 180, 50, Color.ORANGE).normal();
         botonRegistrarse=new Boton(botonRegistrarse,"imagenes/registro.png", 50, 50).conImagen();
+        botonRegistrarse.setForeground(Color.WHITE);
         panel.add(botonRegistrarse);
 
-        JButton botonRegresar= new Boton("Regresar al login",10 , 430, 150, 50, Color.gray).normal();
+        JButton botonRegresar= new Boton("",0 , 430, 150, 50, Color.white).normal();
         botonRegresar=new Boton(botonRegresar, "imagenes/regresar2.png", 40, 40).conImagen();
+        botonRegresar.setBorderPainted(false);
+        botonRegresar.setFocusPainted(false);
+        botonRegresar.setContentAreaFilled(false);
         panel.add(botonRegresar);
 
         botonRegresar.addActionListener(e ->{
@@ -72,24 +78,34 @@ public class Registrarse extends JFrame {
 
     private void campos() {
 
+        // Nombre
         JTextField campoNombre = new JTextField();
         campoNombre.setBounds(200, 100, 200, 30);
+        campoNombre = new CampoTexto(campoNombre, "Ej: Juan").textoTemporal();
         panel.add(campoNombre);
 
+        // Apellidos
         JTextField campoApellidos = new JTextField();
         campoApellidos.setBounds(200, 150, 200, 30);
+        campoApellidos = new CampoTexto(campoApellidos, "Ej: Pérez García").textoTemporal();
         panel.add(campoApellidos);
 
+        // Número
         JTextField campoNumero = new JTextField();
         campoNumero.setBounds(200, 200, 200, 30);
+        campoNumero = new CampoTexto(campoNumero, "Ej: 5512345678").textoTemporal();
         panel.add(campoNumero);
 
+        // Dirección
         JTextField campoDireccion = new JTextField();
         campoDireccion.setBounds(200, 250, 200, 30);
+        campoDireccion = new CampoTexto(campoDireccion, "Ej: Av. Reforma #123").textoTemporal();
         panel.add(campoDireccion);
 
+        // Correo
         JTextField campoCorreo = new JTextField();
         campoCorreo.setBounds(200, 300, 200, 30);
+        campoCorreo = new CampoTexto(campoCorreo, "Ej: usuario@mail.com").textoTemporal();
         panel.add(campoCorreo);
 
         JPasswordField campoContraseña = new JPasswordField();

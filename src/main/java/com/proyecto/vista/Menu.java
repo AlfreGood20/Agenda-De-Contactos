@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.MouseAdapter;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,10 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-
+import javax.swing.SwingUtilities;
 import com.proyecto.utilidad.Boton;
 import com.proyecto.utilidad.CampoTexto;
 import com.proyecto.utilidad.CompoMeu;
@@ -67,8 +69,7 @@ public class Menu extends JFrame {
     private void menu() {
         JMenuBar menuBar = new JMenuBar();
 
-        JMenu logo = new CompoMeu("ContactApp", 40, 40, 0, 0, Color.BLACK, 20, "Arial", "imagenes/logo.png", 80, 60)
-                .menuEncabezado();
+        JMenu logo = new CompoMeu("ContactApp", 40, 40, 0, 0, Color.BLACK, 20, "Arial", "imagenes/logo.png", 80, 60).menuEncabezado();
         logo.setEnabled(false);
         menuBar.add(logo);
 
@@ -93,6 +94,17 @@ public class Menu extends JFrame {
 
         JMenu cerrarSesion = new CompoMeu("Cerrar Sesión", 40, 40, 20, 20, Color.BLACK, 20, "Arial","imagenes/cerrar sesion.png", 40, 40).menuEncabezado();
         menuBar.add(cerrarSesion);
+
+        cerrarSesion.addMouseListener(new MouseAdapter() {
+            
+        @Override
+        public void mousePressed(java.awt.event.MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    dispose();
+                    new Login();
+                }
+            }
+        });
 
         this.setJMenuBar(menuBar);
     }
@@ -136,21 +148,27 @@ public class Menu extends JFrame {
 
     public void campoTexto(){
         JTextField campoNombre=new CampoTexto(50, 160, 350, 35, "Arial", 15).campo();
+        campoNombre=new CampoTexto(campoNombre,"Juan pepito").textoTemporal();
         panelRegistro.add(campoNombre);
 
         JTextField campoApellidos=new CampoTexto(550, 160, 350, 35, "Arial", 15).campo();
+        campoApellidos=new CampoTexto(campoApellidos,"Perez Gomez").textoTemporal();
         panelRegistro.add(campoApellidos);
 
         JTextField campoTelefono=new CampoTexto(50, 270, 350, 35, "Arial", 15).campo();
+        campoTelefono=new CampoTexto(campoTelefono, "993388920").textoTemporal();
         panelRegistro.add(campoTelefono);
 
         JTextField campoDirreccion=new CampoTexto(550, 270, 350, 35, "Arial", 15).campo();
+        campoDirreccion=new CampoTexto(campoDirreccion,"av. industrial etc").textoTemporal();
         panelRegistro.add(campoDirreccion);
 
         JTextField campoCorreo=new CampoTexto(50, 380, 350, 35, "Arial", 15).campo();
+        campoCorreo=new CampoTexto(campoCorreo,"juanperez@gmail.com").textoTemporal();
         panelRegistro.add(campoCorreo);
 
         JTextField campoNota= new CampoTexto(230, 470, 500, 90, "Arial", 20).campo();
+        campoNota=new CampoTexto(campoNota,"Este es el contacto de un compa del trabajo").textoTemporal();
         panelRegistro.add(campoNota);
     }
 

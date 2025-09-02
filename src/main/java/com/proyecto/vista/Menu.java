@@ -6,7 +6,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -75,9 +74,17 @@ public class Menu extends JFrame {
         JMenu crearContacto = new CompoMeu("Crear Contacto", 40, 40, 20, 20, Color.BLACK, 20, "Arial","imagenes/Mas.png", 40, 40).menuEncabezado();
         menuBar.add(crearContacto);
 
-        JMenu buscar = new CompoMeu("Buscar", 40, 40, 20, 20, Color.BLACK, 20, "Arial", "imagenes/lupa.png", 40, 40)
-                .menuEncabezado();
+        JMenu buscar = new CompoMeu("Buscar", 40, 40, 20, 20, Color.BLACK, 20, "Arial", "imagenes/lupa.png", 40, 40).menuEncabezado();
         menuBar.add(buscar);
+
+        buscar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e){
+                if(SwingUtilities.isLeftMouseButton(e)){
+                    new Buscar();
+                }
+            }
+        });
 
         JMenu lista = new CompoMeu("Lista", 40, 40, 20, 20, Color.BLACK, 20, "Arial", "imagenes/lista.png", 40, 40)
                 .menuEncabezado();

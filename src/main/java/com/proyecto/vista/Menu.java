@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
+
+import com.proyecto.controlador.RegistrarContacto;
 import com.proyecto.utilidad.Boton;
 import com.proyecto.utilidad.CampoTexto;
 import com.proyecto.utilidad.CompoMeu;
@@ -25,6 +27,15 @@ public class Menu extends JFrame {
 
     private JPanel panelPrincipal;
     private JPanel panelRegistro;
+
+    //AQUI ESTARAN LOS JTEXFILD QUE SE USARAN
+    private JTextField campoNombre;
+    private JTextField campoApellidos;
+    private JTextField campoTelefono;
+    private JTextField campoDireccion;
+    private JTextField campoCorreo;
+    private JTextField campoNota;
+    private JComboBox<String> campoCategoria;
 
     public Menu() {
         this.setTitle("Menu"); // TITULO DE LA VENTANA
@@ -86,9 +97,16 @@ public class Menu extends JFrame {
             }
         });
 
-        JMenu lista = new CompoMeu("Lista", 40, 40, 20, 20, Color.BLACK, 20, "Arial", "imagenes/lista.png", 40, 40)
-                .menuEncabezado();
+        JMenu lista = new CompoMeu("Lista", 40, 40, 20, 20, Color.BLACK, 20, "Arial", "imagenes/lista.png", 40, 40).menuEncabezado();
         menuBar.add(lista);
+        lista.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e){
+                if(SwingUtilities.isLeftMouseButton(e)){
+                    new MostrarLista();
+                }
+            }
+        });
 
         JMenu actualizar = new CompoMeu("Actualizar", 40, 40, 20, 20, Color.BLACK, 20, "Arial","imagenes/actuzalizar.png", 40, 40).menuEncabezado();
         menuBar.add(actualizar);
@@ -168,36 +186,36 @@ public class Menu extends JFrame {
         panelRegistro.add(nota);
     }
 
-    public void campoTexto(){
-        JTextField campoNombre=new CampoTexto(50, 160, 350, 35, "Arial", 15).campo();
+    private void campoTexto(){
+        campoNombre=new CampoTexto(50, 160, 350, 35, "Arial", 15).campo();
         campoNombre=new CampoTexto(campoNombre,"Juan pepito").textoTemporal();
         panelRegistro.add(campoNombre);
 
-        JTextField campoApellidos=new CampoTexto(550, 160, 350, 35, "Arial", 15).campo();
+        campoApellidos=new CampoTexto(550, 160, 350, 35, "Arial", 15).campo();
         campoApellidos=new CampoTexto(campoApellidos,"Perez Gomez").textoTemporal();
         panelRegistro.add(campoApellidos);
 
-        JTextField campoTelefono=new CampoTexto(50, 270, 350, 35, "Arial", 15).campo();
+        campoTelefono=new CampoTexto(50, 270, 350, 35, "Arial", 15).campo();
         campoTelefono=new CampoTexto(campoTelefono, "993388920").textoTemporal();
         panelRegistro.add(campoTelefono);
 
-        JTextField campoDirreccion=new CampoTexto(550, 270, 350, 35, "Arial", 15).campo();
-        campoDirreccion=new CampoTexto(campoDirreccion,"av. industrial etc").textoTemporal();
-        panelRegistro.add(campoDirreccion);
+        campoDireccion=new CampoTexto(550, 270, 350, 35, "Arial", 15).campo();
+        campoDireccion=new CampoTexto(campoDireccion,"av. industrial etc").textoTemporal();
+        panelRegistro.add(campoDireccion);
 
-        JTextField campoCorreo=new CampoTexto(50, 380, 350, 35, "Arial", 15).campo();
+        campoCorreo=new CampoTexto(50, 380, 350, 35, "Arial", 15).campo();
         campoCorreo=new CampoTexto(campoCorreo,"juanperez@gmail.com").textoTemporal();
         panelRegistro.add(campoCorreo);
 
-        JTextField campoNota= new CampoTexto(230, 470, 500, 90, "Arial", 20).campo();
+        campoNota= new CampoTexto(230, 470, 500, 90, "Arial", 20).campo();
         campoNota=new CampoTexto(campoNota,"Este es el contacto de un compa del trabajo").textoTemporal();
         panelRegistro.add(campoNota);
     }
 
     private void checkBox(){
-        String [] categorias={"Elige una categoria: ","Escuela","Trabajo","Amigo","Familia"};
+        String [] categorias={"Elige una categoria: ","Escuela","Trabajo","Amigo","Familia","Pareja","Amante"};
 
-        JComboBox<String> campoCategoria = new JComboBox<>(categorias);
+        campoCategoria = new JComboBox<>(categorias);
         campoCategoria.setBounds(550, 380, 350, 35);
         panelRegistro.add(campoCategoria);
     }
@@ -214,6 +232,8 @@ public class Menu extends JFrame {
         JButton limpiar= new Boton("Limpiar", 710, 600, 200, 50, Color.RED).normal();
         limpiar=new Boton(limpiar, "imagenes/limpiar.png", 50, 50).conImagen();
         panelRegistro.add(limpiar);
+
+        new RegistrarContacto(guardar, limpiar, fotoPerfil, this);
     }
 
     private void crearPanelSecundario(){
@@ -244,6 +264,38 @@ public class Menu extends JFrame {
         panelRegistro.setBackground(Color.white);
         panelRegistro.setBounds(200, 150, 950, 700);
         panelPrincipal.add(panelRegistro);
+    }
+
+
+        // Getters y Setters de los JTextField
+    public JTextField getCampoNombre() {
+        return campoNombre;
+    }
+
+    public JTextField getCampoApellidos() {
+        return campoApellidos;
+    }
+
+
+    public JTextField getCampoTelefono() {
+        return campoTelefono;
+    }
+
+    public JTextField getCampoDireccion() {
+        return campoDireccion;
+    }
+
+    public JTextField getCampoCorreo() {
+        return campoCorreo;
+    }
+
+    public JTextField getCampoNota() {
+        return campoNota;
+    }
+
+    // 🔹 Getter y Setter del JComboBox
+    public JComboBox<String> getCampoCategoria() {
+        return campoCategoria;
     }
 
 }

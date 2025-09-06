@@ -18,7 +18,7 @@ public class MostrarLista extends JFrame {
 
     public MostrarLista() {
         setTitle("Lista de contactos");
-        setSize(1020, 450);
+        setSize(1020, 650);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false); // PARA QUE EL USUARIO NO REDUZCA LA PANTALLA
@@ -52,13 +52,13 @@ public class MostrarLista extends JFrame {
         Object[][] datos = new ListadoContactos().datosContactos();
 
         // Crear JTable con los datos reales
-        JTable tabla = new Tabla(columnas, datos, Color.BLACK, Color.WHITE, 15, "Cooper Black", 35, "Arial").tabla();
+        JTable tabla = new Tabla(columnas, datos, Color.BLACK, Color.WHITE, 16, "Cooper Black", 35, "Arial").tabla();
 
         // ScrollPane para la tabla
         JScrollPane scroll = new JScrollPane(tabla);
 
         // Ajustar tamaño y posición (ocupa todo el panel)
-        scroll.setBounds(53, 80, 900, 300);
+        scroll.setBounds(53, 80, 900, 500);
 
         panel.add(scroll);
     }

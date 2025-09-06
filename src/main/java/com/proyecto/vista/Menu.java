@@ -90,13 +90,29 @@ public class Menu extends JFrame {
                 .menuEncabezado();
         menuBar.add(lista);
 
-        JMenu actualizar = new CompoMeu("Actualizar", 40, 40, 20, 20, Color.BLACK, 20, "Arial",
-                "imagenes/actuzalizar.png", 40, 40).menuEncabezado();
+        JMenu actualizar = new CompoMeu("Actualizar", 40, 40, 20, 20, Color.BLACK, 20, "Arial","imagenes/actuzalizar.png", 40, 40).menuEncabezado();
         menuBar.add(actualizar);
 
-        JMenu eliminar = new CompoMeu("Eliminar", 40, 40, 40, 40, Color.BLACK, 20, "Arial", "imagenes/eliminar.png", 40,
-                40).menuEncabezado();
+        actualizar.addMouseListener(new MouseAdapter(){
+            @Override
+        public void mousePressed(java.awt.event.MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    new ActualizarContact();
+                }
+            }
+        });
+
+        JMenu eliminar = new CompoMeu("Eliminar", 40, 40, 40, 40, Color.BLACK, 20, "Arial", "imagenes/eliminar.png", 40,40).menuEncabezado();
         menuBar.add(eliminar);
+
+        eliminar.addMouseListener(new MouseAdapter(){
+            @Override
+        public void mousePressed(java.awt.event.MouseEvent e) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
+                    new BorrarContact();
+                }
+            }
+        });
 
         JMenu cerrarSesion = new CompoMeu("Cerrar Sesión", 40, 40, 20, 20, Color.BLACK, 20, "Arial","imagenes/cerrar sesion.png", 40, 40).menuEncabezado();
         menuBar.add(cerrarSesion);

@@ -7,13 +7,14 @@ import java.awt.*;
 public class VentanaMensaje extends JFrame{
 
     public VentanaMensaje(String mensaje, String url) {
-        setTitle("Validación");
+        setTitle("Mensaje");
         setSize(400, 250);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false); //PARA QUE EL USUARIO NO REDUZCA LA PANTALLA
         setLayout(null);
+        setType(JFrame.Type.UTILITY);
 
         // Crear un ImageIcon desde la URL
         JLabel icon=new Etiqueta(140, 20, 100, 100, url).conImagen();

@@ -1,7 +1,8 @@
 package com.proyecto.vista;
 
-
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,15 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import com.proyecto.dao.LoginDAO;
 import com.proyecto.utilidad.Boton;
 import com.proyecto.utilidad.CampoTexto;
+import com.proyecto.utilidad.Conexion;
 import com.proyecto.utilidad.Etiqueta;
+import com.proyecto.utilidad.VentanaMensaje;
 
 
 public class Login  extends JFrame{
     private JPanel panel;
-    String Titulo_Ventana;
-    String Titulo_Etiqueta;
+    private JTextField campoCorreo;
+    private JPasswordField  campoContraseña;
 
    public Login(){
 
@@ -65,8 +70,27 @@ public class Login  extends JFrame{
         panel.add(entrar);
 
         entrar.addActionListener(e -> {
-            this.setVisible(false);
-            new Menu();
+            
+            String correo = campoCorreo.getText();
+            String contraseña = String.valueOf(campoContraseña.getPassword()); 
+            LoginDAO loginDAO = new LoginDAO();
+            try {
+                Connection conexcion= Conexion.getInstancia().getConexion();
+                boolean validar = loginDAO.autenticarUsuario(conexcion, correo, contraseña);
+
+                if (validar==true) {
+                    this.setVisible(false);
+                    new Menu();
+
+                } else {
+                    new VentanaMensaje("Correo o contraseña incorrectos", "imagenes/NOT-ACCESO.png");
+                }
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }finally {
+                Conexion.getInstancia().cerrarConexion();
+            }
         });
 
         JButton crearCuenta=new Boton("<html><u>Crea una cuenta aqui</u></html>",170, 310, 160, 30, Color.white).normal();
@@ -83,11 +107,11 @@ public class Login  extends JFrame{
     }
 
     private void textField(){
-        JTextField campoCorreo = new CampoTexto(150, 120, 200, 30, "Arial", 15).campo();
+        campoCorreo = new CampoTexto(150, 120, 200, 30, "Arial", 15).campo();
         campoCorreo=new CampoTexto(campoCorreo,"ejemplo@gmail.com").textoTemporal();
         panel.add(campoCorreo);
 
-        JPasswordField campoContraseña = new CampoTexto(150, 200, 200, 30, "Arial", 15).campoContraseña();
+        campoContraseña = new CampoTexto(150, 200, 200, 30, "Arial", 15).campoContraseña();
         campoContraseña.setEchoChar('*');
         panel.add(campoContraseña);
     }

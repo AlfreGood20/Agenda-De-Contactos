@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class EstiloVentana {
+
    public static Color colorFondo;
    public static Color colorBoton;
    public static Color colorBotonTexto;
@@ -21,10 +22,10 @@ public class EstiloVentana {
    public static Dimension tamanoBoton;         
    public static Dimension tamanoCampoTexto;    
    static {
-      colorFondo = Color.DARK_GRAY;
+      colorFondo = Color.white;
       colorBoton = Color.GRAY;
       colorBotonTexto = Color.BLACK;
-      colorTexto = Color.ORANGE;
+      colorTexto = Color.black;
       fuenteTitulo = new Font("Arial", 2, 18);
       fuenteEtiqueta = new Font("Arial", 0, 14);
       fuenteBoton = new Font("Arial", 1, 14);

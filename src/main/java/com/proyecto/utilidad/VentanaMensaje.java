@@ -20,7 +20,7 @@ public class VentanaMensaje extends JFrame{
         JLabel icon=new Etiqueta(140, 20, 100, 100, url).conImagen();
         add(icon);
 
-        JLabel mandarMensaje=new Etiqueta("<html>"+mensaje+"</html>", 0, 110, 380, 100, Color.BLACK, 20, "Arial").normal();
+        JLabel mandarMensaje=new Etiqueta("<html>"+mensaje+"</html>", 10, 110, 380, 100, Color.BLACK, 20, "Arial").normal();
         add(mandarMensaje);
 
         JButton btnCerrar = new JButton("Cerrar");

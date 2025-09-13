@@ -1,13 +1,18 @@
 package com.proyecto.vista;
 
 import javax.swing.*;
+
+import com.proyecto.controlador.BuscarContactos;
+
 import java.awt.*;
 import java.awt.event.*;
 public class Buscar extends JFrame{
     
-    // Componentes de la interfaz
+    // Campo de búsqueda
     private JTextField campoNombreBusqueda;
     private JButton botonBuscar;
+
+    // Campos de resultado
     private JTextField campoNombre, campoApellidos, campoTelefono, campoDireccion, campoCorreo;
     
     // Componentes para la barra personalizada
@@ -47,7 +52,10 @@ public class Buscar extends JFrame{
 
         JLabel etiquetaBusqueda = new JLabel("Nombre:");
         campoNombreBusqueda = new JTextField(15);
+
+        // Botón de búsqueda
         botonBuscar = new JButton("Buscar");
+
 
         aplicarEstiloEtiqueta(etiquetaBusqueda);
         aplicarEstiloCampoTexto(campoNombreBusqueda);
@@ -101,23 +109,10 @@ public class Buscar extends JFrame{
         panelPrincipal.add(panelResultado, BorderLayout.CENTER);
 
         add(panelPrincipal, BorderLayout.CENTER);
-        
-        // Configurar acción del botón de búsqueda (simulada)
-        botonBuscar.addActionListener(e -> {
-            String nombreBuscado = campoNombreBusqueda.getText().trim();
-            if(nombreBuscado.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Ingrese un nombre para buscar.");
-            } else {
-                // Simulamos datos encontrados
-                campoNombre.setText(nombreBuscado);
-                campoApellidos.setText("Pérez López");
-                campoTelefono.setText("123-456-7890");
-                campoDireccion.setText("Calle Falsa 123, Ciudad");
-                campoCorreo.setText("correo@ejemplo.com");
-            }
-        });
 
         setVisible(true);
+
+        new BuscarContactos(botonBuscar, this);
     }
     
     private void crearBarraSuperior() {
@@ -183,5 +178,63 @@ public class Buscar extends JFrame{
         campo.setFont(fuenteEtiqueta);
         campo.setPreferredSize(tamañoCampoTexto);
     }
-    
+
+    // ====== GETTERS ======
+    public String getNombre() {
+        return campoNombre.getText();
+    }
+
+    public String getApellidos() {
+        return campoApellidos.getText();
+    }
+
+    public String getTelefono() {
+        return campoTelefono.getText();
+    }
+
+    public String getDireccion() {
+        return campoDireccion.getText();
+    }
+
+    public String getCorreo() {
+        return campoCorreo.getText();
+    }
+
+    public String getNombreBusqueda() {
+        return campoNombreBusqueda.getText();
+    }
+
+    // ====== SETTERS ======
+    public void setNombre(String nombre) {
+        campoNombre.setText(nombre);
+    }
+
+    public void setApellidos(String apellidos) {
+        campoApellidos.setText(apellidos);
+    }
+
+    public void setTelefono(String telefono) {
+        campoTelefono.setText(telefono);
+    }
+
+    public void setDireccion(String direccion) {
+        campoDireccion.setText(direccion);
+    }
+
+    public void setCorreo(String correo) {
+        campoCorreo.setText(correo);
+    }
+
+    public void setNombreBusqueda(String texto) {
+        campoNombreBusqueda.setText(texto);
+    }
+
+    // ====== LIMPIAR CAMPOS ======
+    public void limpiarCamposResultado() {
+        campoNombre.setText("");
+        campoApellidos.setText("");
+        campoTelefono.setText("");
+        campoDireccion.setText("");
+        campoCorreo.setText("");
+    }
 }

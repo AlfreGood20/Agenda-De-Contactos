@@ -29,7 +29,7 @@ public class BuscarContactos implements ActionListener {
         String nombreBusqueda = ventana.getNombreBusqueda().trim();
 
         if(nombreBusqueda.isEmpty()) {
-            new VentanaMensaje("Ingrese el nombre del contacto", "imagen/UNA X.png");
+            new VentanaMensaje("Ingrese el nombre del contacto", "imagenes/Informacion.png");
             return;
         }
 
@@ -40,7 +40,7 @@ public class BuscarContactos implements ActionListener {
             Contacto contacto=new ContactoDAO().obtenerContactoPorNombre(conexion, nombreBusqueda);
 
             if(contacto==null){
-                new VentanaMensaje("No se encontró ningún contacto con el nombre: " + nombreBusqueda, "imagen/UNA X.png");
+                new VentanaMensaje("No se encontró ningún contacto con el nombre: " + nombreBusqueda, "imagenes/UNA X.png");
                 ventana.setNombre("");
                 ventana.setApellidos("");
                 ventana.setTelefono("");

@@ -115,7 +115,7 @@ public class Menu extends JFrame {
             @Override
         public void mousePressed(java.awt.event.MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e)) {
-                    new ActualizarContact();
+                    new ActualizarContacto();
                 }
             }
         });
@@ -127,7 +127,8 @@ public class Menu extends JFrame {
             @Override
         public void mousePressed(java.awt.event.MouseEvent e) {
                 if (SwingUtilities.isLeftMouseButton(e)) {
-                    new BorrarContact();
+                    new EliminarContacto().setVisible(true);
+                    System.out.println("SISI");
                 }
             }
         });
